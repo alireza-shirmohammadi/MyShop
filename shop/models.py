@@ -19,7 +19,7 @@ class Category(models.Model):
 #    def get_absolute_url(self):
     #    return reverse('product_list_by_category', args=[self.slug])
     def get_absolute_url(self):
-        return reverse('product_list_by_category', args=[self.slug])
+        return reverse('shop:product_list_by_category', args=[self.slug])
 
 class Subcat(models.Model):
     category=models.ForeignKey(Category,on_delete=models.CASCADE)
@@ -37,7 +37,7 @@ class Subcat(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('product_list_by_subcat', args=[self.category.slug, self.slug])
+        return reverse('shop:product_list_by_subcat', args=[self.category.slug, self.slug])
 
 
 class Product(models.Model):
@@ -76,4 +76,4 @@ class Product(models.Model):
 
 
     def get_absolute_url(self):
-       return reverse('product_detail', args=[self.category.slug, self.subcat.slug, self.slug])
+       return reverse('shop:product_detail', args=[self.category.slug, self.subcat.slug, self.slug])
